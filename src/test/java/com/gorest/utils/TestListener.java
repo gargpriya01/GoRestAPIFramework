@@ -14,7 +14,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName());
+        ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(),result.getMethod().getDescription());
         test.set(extentTest);
     }
 
@@ -27,6 +27,8 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         test.get().log(Status.FAIL, "Test Failed");
         test.get().log(Status.FAIL, result.getThrowable());
+        String screenshotPath = "screenshots/" + result.getMethod().getMethodName() + ".png";
+        test.get().addScreenCaptureFromPath(screenshotPath);
     }
 
     @Override

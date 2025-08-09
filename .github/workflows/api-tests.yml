@@ -9,6 +9,8 @@ on:
 jobs:
   run-api-tests:
     runs-on: ubuntu-latest
+    env:
+      GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
 
     steps:
       - name: Checkout code

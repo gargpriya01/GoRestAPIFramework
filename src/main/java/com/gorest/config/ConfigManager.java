@@ -23,7 +23,12 @@ public class ConfigManager {
 
 
         public static String getAuthToken() {
-            return prop.getProperty("authToken");
+
+            String token=prop.getProperty("authToken");
+            if (token == null || token.isEmpty()) {
+                throw new RuntimeException("OAuth token not provided!");
+            }
+            return token;
             //return "Bearer "+System.getenv("GOREST_TOKEN");  //getting token from github secret
         }
 
