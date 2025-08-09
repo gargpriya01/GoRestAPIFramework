@@ -1,0 +1,26 @@
+[
+  {
+    "name": "John Doe",
+    "gender": "male",
+    "email": "john.doe@example.com",
+    "status": "active"
+  },
+  {
+    "name": "Priya Garg",
+    "gender": "female",
+    "email": "priya.garg@example.com",
+    "status": "inactive"
+  },
+  {
+    "name": "Pr Garg",
+    "gender": "male",
+    "email": "pr.garg@example.com",
+    "status": "active"
+  },
+  {
+    "name": "Pranay Garg",
+    "gender": "male",
+    "email": "pranay.garg@example.com",
+    "status": "inactive"
+  }
+]

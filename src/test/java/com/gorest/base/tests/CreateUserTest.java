@@ -3,6 +3,7 @@ package com.gorest.base.tests;
 import com.gorest.base.BaseTest;
 import com.gorest.constants.Endpoints;
 import com.gorest.models.User;
+import com.gorest.utils.JsonDataReader;
 import com.gorest.utils.RetryAnalyzer;
 import io.restassured.response.Response;
 import org.testng.IRetryAnalyzer;
@@ -43,6 +44,18 @@ public class CreateUserTest extends BaseTest {
                 .statusCode(201)
                 .body("email", equalTo(email))
                 .extract().response();
+    }
+
+    @Test(dataProvider = "userDataFromJson",dataProviderClass= JsonDataReader.class)
+    public void createUserFromJson(User userData) {
+        // Build the request payload via builder
+        given().spec(requestSpecification)
+                .body(userData)
+                .when().post(Endpoints.USERS)
+                .then()
+                .statusCode(201)
+                .body("name", equalTo(userData.getName()));
+
     }
 
 }

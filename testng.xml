@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="GoRest API Suite" parallel="methods" thread-count="3">
+<suite name="GoRest API Suite" parallel="methods" thread-count="4">
     <listeners>
         <listener class-name="com.gorest.utils.TestListener"></listener>
     </listeners>
@@ -8,7 +8,7 @@
         <classes>
             <class name="com.gorest.base.tests.CreateUserTest">
                 <methods>
-                    <include name="createUserTest"/>
+                    <include name="createUserFromJson"/>
                 </methods>
             </class>
         </classes>

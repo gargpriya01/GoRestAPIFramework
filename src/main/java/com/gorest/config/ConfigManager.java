@@ -24,6 +24,7 @@ public class ConfigManager {
 
         public static String getAuthToken() {
             return prop.getProperty("authToken");
+            //return "Bearer "+System.getenv("GOREST_TOKEN");  //getting token from github secret
         }
 
         public static boolean isParallelExecution() {

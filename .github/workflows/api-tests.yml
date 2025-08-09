@@ -30,9 +30,24 @@ jobs:
       - name: Run Tests with Maven
         run: mvn clean test
 
+      - name: Run Tests
+        env:
+          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
+        run: mvn clean test
+
       - name: Upload Extent Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: extent-report
           path: reports/
+
+      - name: Re-run Failed Tests (if file exists)
+        if: always()  # always try to rerun even if previous step failed
+        run: |
+          if [ -f test-output/testng-failed.xml ]; then
+            mvn test -DsuiteXmlFile=test-output/testng-failed.xml
+          else
+            echo "No failed tests to rerun."
+          fi
+
